@@ -1,0 +1,49 @@
+
+Tandy Assembly 2024 - BBS Display
+
+Modifications to stock configuration
+
+1) Running from LDOS on FreHD - no floppies needed
+    BBS originally ran on 2 floppy system, under TRSDOS or LDOS
+    Software Modifications required:
+        a) Install LDOS system to floppy drive (via emulator)
+        b) Copy all BBS-related files to bootable hard disk drive (FreHD)
+        c) Modify HOST/BAS -> RHOST/BAS, line 100 - change SD$ and DD$ to new drive (ex. ":3")
+        d) Recreate RUPLOAD/ASM from UPLOAD/CMD and magazine article
+        e) Re-assemble RUPLOAD/ASM to RUPLOAD/CMD, moving the address away from KI and RSH device locations in high memory
+        f) Modify LINKUP/JCL to RLINKUP/JCL, with following changes:
+            reset KI first, before setting it again
+            change MEMORY HIGH address to protect new RUPLOAD/CMD location
+            load RUPLOAD/CMD instead of UPLOAD/CMD
+            launch BASIC instead of LBASIC (newer version?)
+
+2) Auto-Answer Hardware for Telephone Interface II:
+    '80 Micro circuit: 
+    Ring detect connects line to phone
+    CASRELAY controls ability of circuit to pickup phone, or hangs up phone
+    RHOST/BAS needs changes to do this
+
+3) SYSOP Audible pager:
+    CASOUT connected to amplifier
+    RHOST/BAS and maybe RUPLOAD/CMD needs changes to support this
+
+4) Switch to turn of monitor - installed back in the day
+   No software changes needed for this
+
+BBS Hardware setup
+    Laptop, Asterisk under WSL on Windows Laptop
+    Wired Hub
+    Grandstream HT802 2-Line ATA
+    Red Rotary phone
+    Telephone Interface II
+    Model III
+    Auto Answer Project Box
+
+Dial-In hardware #1:
+    DT-1 Data terminal
+    Avatex 2400HC direct connect modem
+
+Dial-In hardware #2:
+    Radio Shack Printing Data terminal
+    Black Rotary phone
+

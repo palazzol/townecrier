@@ -1,0 +1,4 @@
+Towne Crier BBS for Model III (DSK) - Author Unknown (19xx)
+
+Memory Size=65000
+Disk Files = 3V
